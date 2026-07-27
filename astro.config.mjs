@@ -27,6 +27,6 @@ export default defineConfig({
   },
 
   // Cloudflare Pages output for Actions support
-  output: 'static',
+  output: 'server',
   adapter: cloudflare(),
 });
