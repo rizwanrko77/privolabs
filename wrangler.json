@@ -1,1 +1,0 @@
-{ "name": "privolabs", "compatibility_date": "2024-04-15", "main": "dist/server/entry.mjs", "assets": { "binding": "ASSETS", "directory": "dist/client" }, "observability": { "enabled": true } }
