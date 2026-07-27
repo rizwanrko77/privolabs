@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "start": "astro dev",
+    "build": "astro build && node cloudflare-build.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check"
