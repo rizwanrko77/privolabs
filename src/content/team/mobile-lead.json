@@ -1,0 +1,16 @@
+{
+  "id": "mobile-lead",
+  "name": "Sophie Nguyen",
+  "role": "Lead Mobile Engineer",
+  "bio": "Sophie leads our native and cross-platform mobile practice. She has shipped consumer apps with millions of active users and knows exactly where React Native excels and where it breaks down.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "Swift",
+    "Kotlin",
+    "React Native"
+  ],
+  "order": 5,
+  "leadership": false,
+  "placeholder": false
+}

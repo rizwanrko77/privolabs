@@ -1,0 +1,52 @@
+---
+/**
+ * PrivoLabs — Insights Index
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §9.4
+ */
+
+import Page from '../../layouts/Page.astro';
+---
+
+<Page 
+  title="Insights — PrivoLabs" 
+  description="Notes on AI systems, engineering practice, and the decisions in between."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <h1 class="font-display heading hero-heading">Insights</h1>
+      <p class="font-body text-large hero-subhead">
+        Notes on AI systems, engineering practice, and the decisions in between.
+      </p>
+    </div>
+  </section>
+  
+  <section class="container py-12">
+    <p class="label text-faint text-center">Articles will be migrated in a future phase.</p>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+  
+  .text-center { text-align: center; }
+</style>

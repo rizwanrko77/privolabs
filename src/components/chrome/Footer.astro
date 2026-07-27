@@ -1,0 +1,306 @@
+---
+/**
+ * PrivoLabs — Footer
+ * Source: 02-DESIGN-SYSTEM.md §3.34
+ *
+ * Mega-footer with sitemap, social links, and a large clipped wordmark.
+ * Uses the standard section reveal animation [data-reveal].
+ */
+---
+
+<footer class="site-footer" data-reveal>
+  <div class="container footer-grid">
+    {/* Intro / Contact Block */}
+    <div class="footer-brand">
+      <img src="/logo.svg" alt="PrivoLabs Logo" class="footer-logo" />
+      <h2 class="font-display heading">Engineering that moves the needle.</h2>
+      <a href="mailto:hello@privolabs.com" class="footer-email label">hello@privolabs.com</a>
+      <p class="footer-address label text-faint mt-4">
+        120 Fenchurch St.<br />
+        London EC3M 5BA
+      </p>
+    </div>
+
+    {/* Sitemap */}
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <div class="footer-col">
+        <span class="label text-faint col-header">Platform</span>
+        <ul class="col-list">
+          <li><a href="/ai" class="footer-link">AI Systems</a></li>
+          <li><a href="/services" class="footer-link">Services</a></li>
+          <li><a href="/technologies" class="footer-link">Technologies</a></li>
+          <li><a href="/work" class="footer-link">Work</a></li>
+          <li><a href="/insights" class="footer-link">Insights</a></li>
+          <li><a href="/team" class="footer-link">Team</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="label text-faint col-header">Company</span>
+        <ul class="col-list">
+          <li><a href="/about" class="footer-link">About Us</a></li>
+          <li><a href="/contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="label text-faint col-header">Social</span>
+        <ul class="col-list flex-row">
+          <li>
+            <a href="https://linkedin.com/company/privolabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/privolabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-meta label text-faint">
+      <span>&copy; {new Date().getFullYear()} PrivoLabs Ltd.</span>
+      <span>All rights reserved.</span>
+    </div>
+
+    {/* Oversized Clipped Wordmark */}
+    <div class="footer-wordmark-wrapper" aria-hidden="true">
+      <span class="footer-wordmark">PrivoLabs<span class="footer-dot"></span></span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-logo {
+    height: 40px;
+    width: auto;
+    margin-bottom: var(--s-6);
+    display: block;
+    transition: filter var(--t-base) var(--ease-out);
+  }
+
+  :global([data-theme='dark']) .footer-logo {
+    filter: drop-shadow(0 0 24px rgba(255, 255, 255, 1)) drop-shadow(0 0 10px rgba(255, 255, 255, 1)) drop-shadow(0 0 2px rgba(255, 255, 255, 1));
+  }
+
+  .site-footer {
+    position: relative;
+    padding-top: var(--s-11);
+    background-color: var(--surface);
+    border-top: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-8);
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+
+  .footer-brand {
+    max-width: 320px;
+  }
+
+  .heading {
+    margin-bottom: var(--s-6);
+    color: var(--text);
+  }
+
+  .footer-email {
+    display: inline-block;
+    color: var(--text-brand);
+    text-decoration: none;
+    transition: color var(--t-fast) var(--ease-out);
+  }
+
+  .footer-email:hover {
+    color: var(--brand-400);
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-6);
+  }
+
+  @media (min-width: 480px) {
+    .footer-nav {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .col-header {
+    display: block;
+    margin-bottom: var(--s-4);
+  }
+
+  .col-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .col-list.flex-row {
+    flex-direction: row;
+  }
+
+  /* Link hover: orange, shifting 4px right, with an orange → fading in from -6px */
+  .footer-link {
+    position: relative;
+    color: var(--text);
+    text-decoration: none;
+    font: 500 var(--body)/1 var(--font-body);
+    display: inline-flex;
+    align-items: center;
+    transition: transform var(--t-base) var(--ease-out),
+                color var(--t-base) var(--ease-out);
+  }
+
+  .footer-link::before {
+    content: '→';
+    position: absolute;
+    left: -12px;
+    opacity: 0;
+    color: var(--brand-500);
+    transform: translateX(-6px);
+    transition: transform var(--t-base) var(--ease-out),
+                opacity var(--t-base) var(--ease-out);
+  }
+
+  .footer-link:hover {
+    color: var(--text-brand);
+    transform: translateX(4px);
+  }
+
+  .footer-link:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Social Icons */
+  .social-link {
+    color: var(--text-faint);
+    transition: color var(--t-fast) var(--ease-out),
+                transform var(--t-fast) var(--ease-snap);
+    display: inline-flex;
+  }
+
+  .social-link:hover {
+    color: var(--text);
+    transform: scale(1.12) rotate(-6deg);
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding-bottom: var(--s-6);
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 640px) {
+    .footer-meta {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  /* Wordmark sits oversized and clipped at the bottom edge, 6% opacity in --bone, dot in full orange */
+  .footer-wordmark-wrapper {
+    position: absolute;
+    bottom: -10%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0.75;
+    pointer-events: none;
+    user-select: none;
+    padding: 0 var(--gutter);
+    z-index: 0;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 18vw, 16rem);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 100;
+    color: var(--bone);
+    opacity: 0.06;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+    display: inline-flex;
+    align-items: baseline;
+  }
+  
+  [data-theme="light"] .footer-wordmark {
+    color: var(--ink-900);
+  }
+
+  .footer-dot {
+    display: inline-block;
+    width: clamp(0.5rem, 2vw, 2rem);
+    height: clamp(0.5rem, 2vw, 2rem);
+    border-radius: var(--r-full);
+    background-color: var(--brand-500);
+    opacity: 1; /* full opacity, overrides parent if possible? Parent has opacity: 0.06, we can't override that directly. 
+                   Wait, to make the dot full orange, we need it outside the opacity element, or give the text itself RGBA. */
+  }
+
+  /* Fix for opacity */
+  .footer-wordmark {
+    opacity: 1;
+    color: rgb(245 243 240 / 0.06); /* --bone at 6% */
+  }
+  [data-theme="light"] .footer-wordmark {
+    color: rgb(10 13 16 / 0.06); /* --ink-900 at 6% */
+  }
+
+  /* Animation overrides for reveal */
+  [data-inview="true"] .col-header {
+    animation: fade-rise 420ms var(--ease-out) both;
+  }
+  
+  [data-inview="true"] .footer-link {
+    animation: fade-rise 280ms var(--ease-out) both;
+  }
+
+  /* Apply stagger delays to links */
+  .footer-col:nth-child(1) li:nth-child(1) .footer-link { animation-delay: 140ms; }
+  .footer-col:nth-child(1) li:nth-child(2) .footer-link { animation-delay: 180ms; }
+  .footer-col:nth-child(1) li:nth-child(3) .footer-link { animation-delay: 220ms; }
+  .footer-col:nth-child(1) li:nth-child(4) .footer-link { animation-delay: 260ms; }
+  
+  .footer-col:nth-child(2) li:nth-child(1) .footer-link { animation-delay: 300ms; }
+  .footer-col:nth-child(2) li:nth-child(2) .footer-link { animation-delay: 340ms; }
+  .footer-col:nth-child(2) li:nth-child(3) .footer-link { animation-delay: 380ms; }
+
+  @keyframes fade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

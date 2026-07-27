@@ -1,0 +1,317 @@
+---
+/**
+ * PrivoLabs — Team Page
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §7
+ */
+
+import Page from '../layouts/Page.astro';
+import { getCollection } from 'astro:content';
+
+const team = await getCollection('team');
+const visibleTeam = team.filter(t => import.meta.env.DEV || !t.data.placeholder).sort((a, b) => a.data.order - b.data.order);
+
+const leadership = visibleTeam.filter(member => member.data.leadership);
+const engineering = visibleTeam.filter(member => !member.data.leadership);
+---
+
+<Page 
+  title="The Team — PrivoLabs" 
+  description="The people who'll actually build it. No account managers between you and the engineers."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <p class="eyebrow">The team</p>
+      <h1 class="font-display heading hero-heading">The people who'll actually build it</h1>
+      <p class="font-body text-large hero-subhead">
+        No account managers between you and the engineers. The people on the first call are the people writing the code.
+      </p>
+    </div>
+  </section>
+
+  {leadership.length > 0 && (
+    <section class="team-section container">
+      <div class="section-header">
+        <h2 class="font-display heading">Leadership</h2>
+      </div>
+      <div class="grid team-grid">
+        {leadership.map(member => (
+          <article class="team-card bg-surface-alt">
+            <div class="member-photo">
+              {member.data.photo ? (
+                <img src={member.data.photo} alt={member.data.name} />
+              ) : (
+                <div class="photo-placeholder">{member.data.name.charAt(0)}</div>
+              )}
+            </div>
+            <div class="member-content">
+              <h3 class="font-display heading-sm">{member.data.name}</h3>
+              <p class="label text-muted">{member.data.role}</p>
+              <p class="font-body mt-4 text-small">{member.data.bio}</p>
+              
+              {member.data.specialisms.length > 0 && (
+                <div class="specialisms mt-4">
+                  {member.data.specialisms.map((spec: string) => (
+                    <span class="tag">{spec}</span>
+                  ))}
+                </div>
+              )}
+              
+              {member.data.linkedin && (
+                <a href={member.data.linkedin} target="_blank" rel="noopener noreferrer" class="text-link mt-4 inline-block">LinkedIn &rarr;</a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {engineering.length > 0 && (
+    <section class="team-section container">
+      <div class="section-header">
+        <h2 class="font-display heading">Engineering</h2>
+      </div>
+      <div class="grid team-grid">
+        {engineering.map(member => (
+          <article class="team-card bg-surface-alt">
+            <div class="member-photo">
+              {member.data.photo ? (
+                <img src={member.data.photo} alt={member.data.name} />
+              ) : (
+                <div class="photo-placeholder">{member.data.name.charAt(0)}</div>
+              )}
+            </div>
+            <div class="member-content">
+              <h3 class="font-display heading-sm">{member.data.name}</h3>
+              <p class="label text-muted">{member.data.role}</p>
+              <p class="font-body mt-4 text-small">{member.data.bio}</p>
+              
+              {member.data.specialisms.length > 0 && (
+                <div class="specialisms mt-4">
+                  {member.data.specialisms.map((spec: string) => (
+                    <span class="tag">{spec}</span>
+                  ))}
+                </div>
+              )}
+              
+              {member.data.linkedin && (
+                <a href={member.data.linkedin} target="_blank" rel="noopener noreferrer" class="text-link mt-4 inline-block">LinkedIn &rarr;</a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {visibleTeam.length === 0 && (
+    <section class="container py-12">
+      <p class="label text-faint text-center">No team members found.</p>
+    </section>
+  )}
+
+  {/* 7.2 Culture block */}
+  <section class="culture-section container">
+    <div class="section-header">
+      <h2 class="font-display heading">How we work together</h2>
+    </div>
+    <div class="grid culture-grid">
+      <div class="culture-item">
+        <h3 class="label">Boring is a compliment.</h3>
+        <p class="font-body">Systems should be unremarkable to operate. Excitement in production is a failure mode.</p>
+      </div>
+      <div class="culture-item">
+        <h3 class="label">The trade-off is the answer.</h3>
+        <p class="font-body">Every technical decision costs something. We name it before committing.</p>
+      </div>
+      <div class="culture-item">
+        <h3 class="label">We inherit our own work.</h3>
+        <p class="font-body">We design for the engineer who takes over in three years, because it's often us.</p>
+      </div>
+      <div class="culture-item">
+        <h3 class="label">Say no early.</h3>
+        <p class="font-body">Declining a project we're wrong for is cheaper for everyone than discovering it in month four.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* 7.3 Careers CTA */}
+  <section class="cta-section container bg-surface-alt">
+    <div class="cta-content">
+      <h2 class="font-display heading">We're hiring engineers who care about production.</h2>
+      <p class="font-body text-large mt-4">If the four things above sound like how you already work, we'd like to hear from you.</p>
+    </div>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+  }
+
+  .section-header {
+    margin-bottom: var(--s-8);
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+    max-width: 800px;
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .team-section {
+    padding-top: var(--s-8);
+    padding-bottom: var(--s-8);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .team-card {
+    border-radius: var(--r-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .member-photo {
+    height: 320px;
+    background-color: var(--surface-float);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-placeholder {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--brand-500);
+  }
+
+  .member-content {
+    padding: var(--s-6);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading-sm {
+    font-size: var(--body-lg);
+    margin-bottom: var(--s-1);
+  }
+
+  .text-small {
+    font-size: var(--small);
+  }
+
+  .specialisms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin-top: auto;
+    padding-top: var(--s-4);
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--s-1) var(--s-2);
+    background-color: var(--surface-float);
+    border-radius: var(--r-sm);
+    color: var(--text-muted);
+  }
+
+  .culture-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .culture-item {
+    border-top: 2px solid var(--rule);
+    padding-top: var(--s-4);
+  }
+
+  .culture-item h3 {
+    margin-bottom: var(--s-2);
+    color: var(--text);
+  }
+
+  .culture-item p {
+    color: var(--text-muted);
+  }
+
+  .cta-section {
+    padding: var(--s-12) var(--s-8);
+    border-radius: var(--r-lg);
+    margin-bottom: var(--s-12);
+  }
+  
+  .cta-content {
+    max-width: 800px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--s-6);
+    height: 48px;
+    border-radius: var(--r-md);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--t-fast) var(--ease-out);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-500);
+    color: var(--brand-500);
+  }
+
+  .text-link {
+    color: var(--brand-500);
+    text-decoration: none;
+  }
+
+  .text-link:hover {
+    text-decoration: underline;
+  }
+
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+  }
+
+  .inline-block { display: inline-block; }
+  .mt-4 { margin-top: var(--s-4); }
+  .mt-6 { margin-top: var(--s-6); }
+</style>

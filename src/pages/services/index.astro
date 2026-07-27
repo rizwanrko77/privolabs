@@ -1,0 +1,101 @@
+---
+/**
+ * PrivoLabs — Services Index
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §5
+ */
+
+import Page from '../../layouts/Page.astro';
+---
+
+<Page 
+  title="Services — PrivoLabs" 
+  description="Engineering practices, not packages. Four disciplines that compose into whole systems."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <h1 class="font-display heading hero-heading">Engineering practices, not packages</h1>
+      <p class="font-body text-large hero-subhead">
+        Four disciplines that compose into whole systems. Most engagements use more than one.
+      </p>
+    </div>
+  </section>
+  
+  <section class="services-section container">
+    <div class="grid services-grid">
+      <a href="/services/custom-development" class="service-card bg-surface-alt">
+        <h2 class="font-display heading-sm">Custom Development</h2>
+        <p class="font-body text-muted mt-2">Software shaped to how you actually work</p>
+      </a>
+      <a href="/services/cloud-platform" class="service-card bg-surface-alt">
+        <h2 class="font-display heading-sm">Cloud & Platform</h2>
+        <p class="font-body text-muted mt-2">Infrastructure that scales without surprising you</p>
+      </a>
+      <a href="/services/mobile-app-development" class="service-card bg-surface-alt">
+        <h2 class="font-display heading-sm">Mobile & App Development</h2>
+        <p class="font-body text-muted mt-2">Apps people keep on the first screen</p>
+      </a>
+      <a href="/services/quality-engineering" class="service-card bg-surface-alt">
+        <h2 class="font-display heading-sm">Quality Engineering</h2>
+        <p class="font-body text-muted mt-2">The work that makes the other work hold</p>
+      </a>
+
+    </div>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+    max-width: 800px;
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  
+  .service-card {
+    display: block;
+    padding: var(--s-8);
+    border-radius: var(--r-md);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--t-fast) var(--ease-out);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .heading-sm {
+    font-size: var(--heading-sm);
+  }
+  
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+  }
+  
+  .mt-2 { margin-top: var(--s-2); }
+</style>

@@ -1,0 +1,138 @@
+---
+/**
+ * PrivoLabs — Base Layout
+ * Source: Implementation Plan §1.4
+ *
+ * Foundation layout with:
+ * - HTML boilerplate, lang="en", data-theme
+ * - Font preloads (self-hosted woff2)
+ * - CSS imports (tokens, motion, global via app.css)
+ * - Skip-to-content link (first in tab order)
+ * - Organization + WebSite structured data
+ * - SEO meta component
+ * - Theme initialisation script (prevents FOUC)
+ */
+
+import '../styles/app.css';
+import { pageTitle, canonicalUrl, organizationSchema, websiteSchema } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogType = 'website',
+  noIndex = false,
+} = Astro.props;
+
+const fullTitle = pageTitle(title);
+const canonicalHref = canonical || canonicalUrl(Astro.url.pathname);
+
+// Structured data — Organization and WebSite (sitewide)
+const orgSchema = organizationSchema();
+const siteSchema = websiteSchema();
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalHref} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalHref} />
+    <meta property="og:site_name" content="PrivoLabs Technologies" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Font preloads — self-hosted woff2, Latin subset
+         Will be updated with actual font file paths once downloaded -->
+    <link
+      rel="preload"
+      href="/fonts/bricolage-grotesque-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/public-sans-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/commit-mono-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Theme initialisation — prevents FOUC by setting theme before paint -->
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('pl-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = stored || preferred;
+      })();
+    </script>
+
+    <!-- Structured data — Organization + WebSite -->
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(orgSchema)}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(siteSchema)}
+    />
+  </head>
+  <body>
+    <!-- Skip to content — first in tab order, per §9 accessibility -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <slot />
+
+    <!-- Intersection Observer for data-reveal animations -->
+    <script>
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          (e.target as HTMLElement).dataset.inview = 'true';
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+      
+      document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    </script>
+  </body>
+</html>

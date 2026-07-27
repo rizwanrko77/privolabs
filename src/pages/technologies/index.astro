@@ -1,0 +1,95 @@
+---
+/**
+ * PrivoLabs — Technologies Index
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §9.3
+ */
+
+import Page from '../../layouts/Page.astro';
+---
+
+<Page 
+  title="Technologies — PrivoLabs" 
+  description="What we build with. Chosen for the problem, not for our comfort."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <h1 class="font-display heading hero-heading">What we build with</h1>
+      <p class="font-body text-large hero-subhead">
+        Chosen for the problem, not for our comfort.
+      </p>
+    </div>
+  </section>
+  
+  <section class="tech-section container">
+    <div class="grid tech-grid">
+      <div class="tech-category bg-surface-alt">
+        <h2 class="label text-muted">AI & ML</h2>
+        <p class="font-body mt-4">OpenAI · Anthropic · open-weight models · LangChain / LlamaIndex · vector databases · Python ML stack</p>
+      </div>
+      <div class="tech-category bg-surface-alt">
+        <h2 class="label text-muted">Frontend</h2>
+        <p class="font-body mt-4">React · Next.js · Angular · Vue · TypeScript</p>
+      </div>
+      <div class="tech-category bg-surface-alt">
+        <h2 class="label text-muted">Backend</h2>
+        <p class="font-body mt-4">Node.js · Python · Java · .NET / ASP.NET Core · Blazor</p>
+      </div>
+      <div class="tech-category bg-surface-alt">
+        <h2 class="label text-muted">Mobile</h2>
+        <p class="font-body mt-4">Swift · Kotlin · React Native · Flutter</p>
+      </div>
+      <div class="tech-category bg-surface-alt">
+        <h2 class="label text-muted">Cloud & Data</h2>
+        <p class="font-body mt-4">AWS · Azure · GCP · Kubernetes · PostgreSQL · MongoDB · Redis</p>
+      </div>
+      <div class="tech-category bg-surface-alt">
+        <h2 class="label text-muted">Quality</h2>
+        <p class="font-body mt-4">Jest · Cypress · Selenium · Playwright · CI/CD</p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .tech-category {
+    padding: var(--s-8);
+    border-radius: var(--r-md);
+  }
+  
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+  }
+  
+  .mt-4 { margin-top: var(--s-4); }
+</style>

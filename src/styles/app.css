@@ -1,0 +1,57 @@
+/* ==========================================================================
+   PrivoLabs — Tailwind v4 Entry Point
+   Tailwind v4 uses CSS-based configuration.
+   ========================================================================== */
+
+@import 'tailwindcss';
+
+/* Import our design tokens and styles */
+@import './tokens.css';
+@import './motion.css';
+@import './global.css';
+
+/* --------------------------------------------------------------------------
+   Tailwind v4 theme configuration via @theme
+   Map our design tokens to Tailwind's theme system
+   -------------------------------------------------------------------------- */
+@theme {
+  /* Colors */
+  --color-brand-50:  #FEECE7;
+  --color-brand-100: #FDD0C3;
+  --color-brand-200: #FFA78F;
+  --color-brand-300: #FF805C;
+  --color-brand-400: #FF683D;
+  --color-brand-500: #FF4A17;
+  --color-brand-600: #EA3806;
+  --color-brand-700: #B8300A;
+  --color-brand-800: #84250B;
+  --color-brand-900: #571B0A;
+  --color-brand-950: #311007;
+
+  --color-ink-950: #06080A;
+  --color-ink-900: #0A0D10;
+  --color-ink-800: #0E1216;
+  --color-ink-700: #141920;
+  --color-ink-600: #1C232C;
+  --color-ink-500: #2A3340;
+  --color-ink-400: #4A5462;
+  --color-ink-300: #6E7885;
+  --color-ink-200: #A8B0BA;
+  --color-ink-100: #D6DAE0;
+  --color-bone:    #F5F3F0;
+
+  --color-success: #3FA680;
+  --color-danger:  #E5484D;
+  --color-data:    #4C8FA8;
+
+  /* Font families */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body:    'Public Sans', system-ui, sans-serif;
+  --font-mono:    'Commit Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Border radius */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-full: 999px;
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "t1",
+    "quote": "[PLACEHOLDER] Two to three sentences describing the problem PrivoLabs solved, how the team worked, and the outcome that mattered. Replace this text entirely. Keep the replacement between 120 and 340 characters.",
+    "authorName": "[PLACEHOLDER] Client Name",
+    "authorRole": "[PLACEHOLDER] Job Title",
+    "company": "[PLACEHOLDER] Company",
+    
+    "industry": "healthcare",
+    
+    "featured": true,
+    "placeholder": true
+  },
+  {
+    "id": "t2",
+    "quote": "[PLACEHOLDER] A quote that names a specific constraint the team worked under and what they did about it. Specifics beat praise. Replace this text entirely, keeping it between 120 and 340 characters.",
+    "authorName": "[PLACEHOLDER] Client Name",
+    "authorRole": "[PLACEHOLDER] Job Title",
+    "company": "[PLACEHOLDER] Company",
+    
+    "industry": "finance",
+    
+    "featured": true,
+    "placeholder": true
+  },
+  {
+    "id": "t3",
+    "quote": "[PLACEHOLDER] A quote about the AI engagement — what was moved from prototype to production and what changed as a result. Replace entirely, between 120 and 340 characters.",
+    "authorName": "[PLACEHOLDER] Client Name",
+    "authorRole": "[PLACEHOLDER] Job Title",
+    "company": "[PLACEHOLDER] Company",
+    
+    "industry": "retail",
+    
+    "featured": true,
+    "placeholder": true
+  },
+  {
+    "id": "t4",
+    "quote": "[PLACEHOLDER] A quote about how the team communicated during delivery, and whether the estimate held. Process quotes convert as well as outcome quotes. Replace entirely, 120 to 340 characters.",
+    "authorName": "[PLACEHOLDER] Client Name",
+    "authorRole": "[PLACEHOLDER] Job Title",
+    "company": "[PLACEHOLDER] Company",
+    
+    "industry": "logistics",
+    
+    "featured": true,
+    "placeholder": true
+  },
+  {
+    "id": "t5",
+    "quote": "[PLACEHOLDER] A quote about the system after launch — reliability, maintenance, or how it handled growth. Post-launch quotes are the most persuasive. Replace entirely, 120 to 340 characters.",
+    "authorName": "[PLACEHOLDER] Client Name",
+    "authorRole": "[PLACEHOLDER] Job Title",
+    "company": "[PLACEHOLDER] Company",
+    
+    "industry": "manufacturing",
+    
+    "featured": true,
+    "placeholder": true
+  },
+  {
+    "id": "t6",
+    "quote": "[PLACEHOLDER] A quote from a longer-running relationship, mentioning how long the engagement has lasted and why it continued. Replace entirely, keeping it between 120 and 340 characters.",
+    "authorName": "[PLACEHOLDER] Client Name",
+    "authorRole": "[PLACEHOLDER] Job Title",
+    "company": "[PLACEHOLDER] Company",
+    
+    "industry": "other",
+    
+    "featured": false,
+    "placeholder": true
+  }
+]

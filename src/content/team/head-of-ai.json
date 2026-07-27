@@ -1,0 +1,16 @@
+{
+  "id": "head-of-ai",
+  "name": "Dr. Marcus Chen",
+  "role": "Head of AI",
+  "bio": "Marcus holds a PhD in Machine Learning and has spent the last five years taking experimental LLM workflows and turning them into robust, highly-available enterprise services.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "LLM systems",
+    "Retrieval",
+    "Evaluation"
+  ],
+  "order": 2,
+  "leadership": true,
+  "placeholder": false
+}

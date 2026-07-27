@@ -1,0 +1,64 @@
+---
+/**
+ * PrivoLabs — Case Study Detail
+ * Source: 01-ARCHITECTURE.md §3
+ */
+
+import { getCollection, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+
+export async function getStaticPaths() {
+  const work = await getCollection('work');
+  return work.map(caseStudy => ({
+    params: { slug: caseStudy.id },
+    props: { caseStudy },
+  }));
+}
+
+const { caseStudy } = Astro.props;
+const { Content } = await render(caseStudy);
+---
+
+<Page 
+  title={`${caseStudy.data.title} — PrivoLabs`} 
+  description={caseStudy.data.summary}
+>
+  <section class="hero-section">
+    <div class="container">
+      <p class="label text-brand mb-4">{caseStudy.data.client}</p>
+      <h1 class="font-display heading">{caseStudy.data.title}</h1>
+    </div>
+  </section>
+
+  <article class="container py-12 prose">
+    <Content />
+  </article>
+</Page>
+
+<style>
+  .hero-section {
+    padding-top: var(--s-11);
+    padding-bottom: var(--s-8);
+    border-bottom: 1px solid var(--rule);
+  }
+  .mb-4 { margin-bottom: var(--s-4); }
+  .py-12 {
+    padding-top: var(--s-9);
+    padding-bottom: var(--s-9);
+  }
+  
+  /* Basic prose styling for MDX content */
+  .prose {
+    max-width: 800px;
+  }
+  .prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: var(--heading);
+    margin-top: var(--s-8);
+    margin-bottom: var(--s-4);
+  }
+  .prose :global(p) {
+    margin-bottom: var(--s-4);
+    color: var(--text-muted);
+  }
+</style>

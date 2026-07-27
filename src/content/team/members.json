@@ -1,0 +1,98 @@
+[
+  {
+    "id": "founder",
+    "name": "[PLACEHOLDER] Founder Name",
+    "role": "Founder & Chief Executive",
+    "bio": "[PLACEHOLDER] Two to three sentences covering the career before PrivoLabs, the technical specialism, and what they own here. Replace entirely. Keep under 320 characters so the card layout holds.",
+    
+    
+    "specialisms": ["Systems architecture", "Delivery leadership"],
+    "order": 1,
+    "leadership": true,
+    "placeholder": true
+  },
+  {
+    "id": "head-of-ai",
+    "name": "[PLACEHOLDER] AI Lead Name",
+    "role": "Head of AI",
+    "bio": "[PLACEHOLDER] Two to three sentences on their background in machine learning or applied AI, and the kind of systems they've taken to production. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["LLM systems", "Retrieval", "Evaluation"],
+    "order": 2,
+    "leadership": true,
+    "placeholder": true
+  },
+  {
+    "id": "head-of-engineering",
+    "name": "[PLACEHOLDER] Engineering Lead Name",
+    "role": "Head of Engineering",
+    "bio": "[PLACEHOLDER] Two to three sentences on their engineering background and what they're responsible for across delivery. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["Distributed systems", "Team leadership"],
+    "order": 3,
+    "leadership": true,
+    "placeholder": true
+  },
+  {
+    "id": "cloud-architect",
+    "name": "[PLACEHOLDER] Cloud Architect Name",
+    "role": "Principal Cloud Architect",
+    "bio": "[PLACEHOLDER] Two to three sentences on cloud platform experience and the scale of infrastructure they've designed. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["AWS", "Kubernetes", "Cost engineering"],
+    "order": 4,
+    "leadership": false,
+    "placeholder": true
+  },
+  {
+    "id": "mobile-lead",
+    "name": "[PLACEHOLDER] Mobile Lead Name",
+    "role": "Lead Mobile Engineer",
+    "bio": "[PLACEHOLDER] Two to three sentences on native and cross-platform mobile experience, and notable apps shipped. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["Swift", "Kotlin", "React Native"],
+    "order": 5,
+    "leadership": false,
+    "placeholder": true
+  },
+  {
+    "id": "quality-lead",
+    "name": "[PLACEHOLDER] Quality Lead Name",
+    "role": "Head of Quality Engineering",
+    "bio": "[PLACEHOLDER] Two to three sentences on test automation, performance, and security validation experience. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["Test automation", "Performance", "Security"],
+    "order": 6,
+    "leadership": false,
+    "placeholder": true
+  },
+  {
+    "id": "fullstack-engineer",
+    "name": "[PLACEHOLDER] Senior Engineer Name",
+    "role": "Senior Full-Stack Engineer",
+    "bio": "[PLACEHOLDER] Two to three sentences on full-stack experience and the products they've built. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["TypeScript", "Python", "PostgreSQL"],
+    "order": 7,
+    "leadership": false,
+    "placeholder": true
+  },
+  {
+    "id": "design-lead",
+    "name": "[PLACEHOLDER] Design Lead Name",
+    "role": "Design Lead",
+    "bio": "[PLACEHOLDER] Two to three sentences on product design and interface work, and how design fits into delivery here. Replace entirely. Under 320 characters.",
+    
+    
+    "specialisms": ["Product design", "Design systems"],
+    "order": 8,
+    "leadership": false,
+    "placeholder": true
+  }
+]

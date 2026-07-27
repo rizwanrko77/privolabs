@@ -1,0 +1,9 @@
+{
+  "id": "placeholder-1",
+  "quote": "This is a placeholder quote that meets the length requirements of the design system. It must be between 120 and 340 characters to ensure the UI card does not break. PrivoLabs delivered exceptional results.",
+  "authorName": "Jane Doe",
+  "authorRole": "CTO",
+  "company": "Acme Corp",
+  "featured": true,
+  "placeholder": true
+}

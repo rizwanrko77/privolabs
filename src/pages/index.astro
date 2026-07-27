@@ -1,0 +1,384 @@
+---
+/**
+ * PrivoLabs — Home Page
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §3
+ */
+
+import Page from '../layouts/Page.astro';
+import TestimonialSlider from '../components/sections/TestimonialSlider.tsx';
+import { getCollection } from 'astro:content';
+import { tokens } from '../data/tokens';
+
+const testimonials = await getCollection('testimonials');
+const visibleTestimonials = testimonials
+  .filter(t => import.meta.env.DEV || !t.data.placeholder)
+  .map(t => t.data);
+
+// Only get featured testimonials for home page
+const featuredTestimonials = visibleTestimonials.filter(t => t.featured).slice(0, 6);
+---
+
+<Page 
+  title="PrivoLabs — AI systems and enterprise software, built to production standards." 
+  description="Most AI pilots never reach production. That's rarely a model problem. We build systems that survive contact with production."
+>
+  {/* 3.1 Hero */}
+  <section class="hero-section container">
+    <div class="hero-content">
+      <p class="eyebrow">AI & software engineering · since {tokens.FOUNDING_YEAR}</p>
+      <h1 class="font-display heading hero-heading">
+        <span class="line">Most AI pilots</span><br/>
+        <span class="line">never reach</span><br/>
+        <span class="line">production.</span>
+      </h1>
+      <p class="font-body text-large hero-subhead">
+        That's rarely a model problem. It's architecture, data plumbing, evaluation, latency, and cost — the unglamorous engineering that decides whether a demo becomes a system. We've been doing that work for {tokens.YEARS_EXPERIENCE} years.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary">Start a project &rarr;</a>
+        <a href="/ai" class="btn btn-secondary">See how we build &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  {/* 3.2 The Gap */}
+  <section class="gap-section container">
+    <div class="section-header">
+      <p class="eyebrow">The problem</p>
+      <h2 class="font-display heading">The distance between a working demo and a working system</h2>
+    </div>
+    <div class="grid gap-grid">
+      <div class="panel">
+        <h3 class="label">01 — Demos are cheap now.</h3>
+        <p class="font-body">A convincing prototype takes an afternoon. That's precisely why a prototype no longer proves anything about whether you can ship.</p>
+      </div>
+      <div class="panel">
+        <h3 class="label">02 — Production is where the cost lives.</h3>
+        <p class="font-body">Evaluation harnesses. Token budgets that don't blow up at scale. Latency under real concurrency. Fallback behaviour when the model is wrong. Audit trails. Access control. None of it appears in a demo.</p>
+      </div>
+      <div class="panel">
+        <h3 class="label">03 — This is ordinary engineering.</h3>
+        <p class="font-body">Hard, but not mysterious. The same discipline as any other production system, applied to a component that happens to be probabilistic. We shipped production systems before the models existed.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* 3.3 Capabilities */}
+  <section class="capabilities-section container bg-surface-alt">
+    <div class="section-header">
+      <p class="eyebrow">What we build</p>
+      <h2 class="font-display heading">Five practices, one engineering team</h2>
+    </div>
+    <div class="grid capabilities-grid">
+      <a href="/ai" class="capability-card">
+        <h3 class="label">AI & Agentic Systems</h3>
+        <p class="font-body">LLM integration, retrieval, agent workflows, evaluation, and the cost and latency work that keeps them viable.</p>
+      </a>
+      <a href="/services/custom-development" class="capability-card">
+        <h3 class="label">Custom Development</h3>
+        <p class="font-body">Business systems built to your actual processes, from concept through deployment and the years after it.</p>
+      </a>
+      <a href="/services/cloud-platform" class="capability-card">
+        <h3 class="label">Cloud & Platform</h3>
+        <p class="font-body">AWS, Azure, and GCP. Migration, cloud-native builds, Kubernetes, and infrastructure that scales without surprises on the invoice.</p>
+      </a>
+      <a href="/services/mobile-app-development" class="capability-card">
+        <h3 class="label">Mobile & App</h3>
+        <p class="font-body">Native iOS and Android, or React Native and Flutter when cross-platform is the right call. Offline, push, store deployment, maintenance.</p>
+      </a>
+      <a href="/services/quality-engineering" class="capability-card">
+        <h3 class="label">Quality Engineering</h3>
+        <p class="font-body">Automated suites, performance testing, security validation, and CI/CD. The reason the other four hold together.</p>
+      </a>
+    </div>
+  </section>
+
+  {/* 3.4 Proof */}
+  <section class="proof-section container">
+    <div class="section-header">
+      <p class="eyebrow">Track record</p>
+      <h2 class="font-display heading">Systems in production</h2>
+    </div>
+    <div class="metrics-grid">
+      {tokens.YEARS_EXPERIENCE !== '{{YEARS_EXPERIENCE}}' && (
+        <div class="metric">
+          <div class="metric-value">{tokens.YEARS_EXPERIENCE}+</div>
+          <div class="metric-label">Years shipping software</div>
+        </div>
+      )}
+      {tokens.PROJECTS_DELIVERED !== '{{PROJECTS_DELIVERED}}' && (
+        <div class="metric">
+          <div class="metric-value">{tokens.PROJECTS_DELIVERED}+</div>
+          <div class="metric-label">Projects delivered</div>
+        </div>
+      )}
+      {tokens.TEAM_SIZE !== '{{TEAM_SIZE}}' && (
+        <div class="metric">
+          <div class="metric-value">{tokens.TEAM_SIZE}</div>
+          <div class="metric-label">Engineers on staff</div>
+        </div>
+      )}
+      {tokens.COUNTRIES_SERVED !== '{{COUNTRIES_SERVED}}' && (
+        <div class="metric">
+          <div class="metric-value">{tokens.COUNTRIES_SERVED}</div>
+          <div class="metric-label">Countries served</div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {/* 3.5 Testimonials */}
+  {featuredTestimonials.length > 0 && (
+    <section class="testimonials-section container">
+      <div class="section-header">
+        <p class="eyebrow">In their words</p>
+        <h2 class="font-display heading">What clients say about working with us</h2>
+      </div>
+      <TestimonialSlider client:only="react" testimonials={featuredTestimonials} />
+    </section>
+  )}
+
+  {/* 3.6 How we work */}
+  <section class="process-section container bg-surface-alt">
+    <div class="section-header">
+      <p class="eyebrow">Engagement</p>
+      <h2 class="font-display heading">Four phases, no mystery</h2>
+    </div>
+    <div class="grid process-grid">
+      <div class="process-step">
+        <h3 class="label">01 · Discovery</h3>
+        <p class="font-body">Requirements and constraints, technical feasibility, architecture, timeline and resourcing. You get a written technical assessment whether or not you proceed.</p>
+      </div>
+      <div class="process-step">
+        <h3 class="label">02 · Design</h3>
+        <p class="font-body">Architecture blueprints, security parameters, scaling strategy, monitoring. Decisions get documented with their trade-offs, so the reasoning survives staff changes.</p>
+      </div>
+      <div class="process-step">
+        <h3 class="label">03 · Build</h3>
+        <p class="font-body">Agile sprints with working software at the end of each. Continuous integration and deployment from day one. You see progress weekly, not at the end.</p>
+      </div>
+      <div class="process-step">
+        <h3 class="label">04 · Run</h3>
+        <p class="font-body">Deployment, migration, performance monitoring, ongoing maintenance. Most of a system's life happens after launch, and most agencies stop caring at exactly that point.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* 3.7 Technical Depth */}
+  <section class="stack-section container">
+    <div class="section-header">
+      <p class="eyebrow">Under the hood</p>
+      <h2 class="font-display heading">The stack, stated plainly</h2>
+    </div>
+    <div class="stack-list">
+      <div class="stack-item">
+        <h3 class="label">Solution Architecture</h3>
+        <p class="font-body">Microservices and cloud-native systems designed to scale predictably. We size for the load you'll have in two years, not the one you have today.</p>
+      </div>
+      <div class="stack-item">
+        <h3 class="label">Web Development</h3>
+        <p class="font-body">React, Angular, and Vue on the front end. Node.js, Python, and Java behind it. Payment gateways, third-party integration, database performance tuning, SSL and API authentication, and PWAs where a native app isn't warranted.</p>
+      </div>
+      <div class="stack-item">
+        <h3 class="label">Mobile Development</h3>
+        <p class="font-body">Native iOS in Swift with SwiftUI and UIKit. Android in Kotlin with Jetpack Compose. React Native and Flutter for cross-platform. Offline functionality, push notifications, location services, store deployment, and the maintenance that follows.</p>
+      </div>
+      <div class="stack-item">
+        <h3 class="label">Technology Stack</h3>
+        <p class="font-body">React with Next.js where SEO matters, Angular for enterprise applications, Vue for dynamic interfaces. Node.js for scalable APIs, Python for AI and ML workloads, Java for enterprise systems. AWS, Azure, and GCP with serverless, containers, and microservices. MongoDB for flexibility, PostgreSQL for complex transactions, Redis for caching.</p>
+      </div>
+      <div class="stack-item">
+        <h3 class="label">Quality Engineering</h3>
+        <p class="font-body">Jest, Selenium, and Cypress for automated coverage. Performance testing that finds bottlenecks before users do. Penetration testing, vulnerability scanning, and compliance verification. CI/CD that makes deployment boring.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* 3.9 Closing CTA */}
+  <section class="cta-section container bg-brand text-inverse">
+    <h2 class="font-display heading">Tell us what you're building.</h2>
+    <p class="font-body text-large">Send the problem, not a spec. First conversation is with an engineer, not a salesperson, and you'll get a straight answer about whether we're the right fit.</p>
+    <a href="/contact" class="btn btn-inverse mt-6">Start a project</a>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+  }
+
+  .section-header {
+    margin-bottom: var(--s-8);
+  }
+
+  .hero-heading {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--s-4);
+    flex-wrap: wrap;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .gap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .capabilities-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .capability-card {
+    padding: var(--s-6);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out);
+  }
+
+  .capability-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-500);
+  }
+
+  .capability-card h3 {
+    margin-bottom: var(--s-3);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--s-8);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: var(--s-8) 0;
+  }
+
+  .metric-value {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 600;
+    color: var(--brand-500);
+    margin-bottom: var(--s-2);
+  }
+
+  .metric-label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .process-step h3 {
+    margin-bottom: var(--s-3);
+    color: var(--brand-500);
+  }
+
+  .stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-8);
+    max-width: 800px;
+  }
+
+  .stack-item {
+    border-left: 2px solid var(--rule);
+    padding-left: var(--s-6);
+  }
+
+  .stack-item h3 {
+    margin-bottom: var(--s-2);
+  }
+
+  .cta-section {
+    padding: var(--s-14) var(--s-6);
+    border-radius: var(--r-lg);
+    margin-bottom: var(--s-12);
+    text-align: center;
+    background-color: var(--brand-600);
+    color: white;
+  }
+
+  .cta-section p {
+    max-width: 600px;
+    margin: var(--s-4) auto 0;
+    opacity: 0.9;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--s-6);
+    height: 48px;
+    border-radius: var(--r-md);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--t-fast) var(--ease-out);
+  }
+
+  .btn-primary {
+    background: var(--brand-500);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--brand-600);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-500);
+    color: var(--brand-500);
+  }
+
+  .btn-inverse {
+    background: white;
+    color: var(--brand-600);
+  }
+
+  .btn-inverse:hover {
+    background: var(--surface-alt);
+  }
+
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+    border-radius: var(--r-lg);
+    padding-left: var(--s-6);
+    padding-right: var(--s-6);
+    margin: var(--s-8) 0;
+  }
+
+  .mt-6 {
+    margin-top: var(--s-6);
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+/**
+ * PrivoLabs — AI Practice Hub
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §4.1
+ */
+
+import Page from '../../layouts/Page.astro';
+import SystemMap from '../../components/sections/SystemMap.tsx';
+---
+
+<Page 
+  title="AI systems, built to production standards — PrivoLabs" 
+  description="We integrate language models, retrieval, and agent workflows into systems that already have users, compliance requirements, and uptime expectations."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <p class="eyebrow">AI practice</p>
+      <h1 class="font-display heading hero-heading">AI systems, built to production standards</h1>
+      <p class="font-body text-large hero-subhead">
+        We integrate language models, retrieval, and agent workflows into systems that already have users, compliance requirements, and uptime expectations. The interesting problems are never the model.
+      </p>
+    </div>
+  </section>
+  
+  <section class="container mb-12">
+    <SystemMap client:only="react" />
+  </section>
+
+  <section class="practices-section container bg-surface-alt">
+    <div class="section-header">
+      <h2 class="font-display heading">What we actually do</h2>
+    </div>
+    <div class="grid practices-grid">
+      <div class="practice-item">
+        <h3 class="label">Integrate models into existing products.</h3>
+        <p class="font-body">Most clients don't need a new AI product. They need AI inside the system they already run, without destabilising it.</p>
+      </div>
+      <div class="practice-item">
+        <h3 class="label">Build retrieval that returns the right thing.</h3>
+        <p class="font-body">Chunking, embedding strategy, hybrid search, reranking, and evaluation. Retrieval quality determines output quality far more than model choice does.</p>
+      </div>
+      <div class="practice-item">
+        <h3 class="label">Ship agent workflows that fail safely.</h3>
+        <p class="font-body">Tool use, orchestration, human checkpoints, and explicit behaviour when the model is confidently wrong.</p>
+      </div>
+      <div class="practice-item">
+        <h3 class="label">Control cost and latency.</h3>
+        <p class="font-body">Token budgets, caching, model routing, batching. The difference between a viable feature and one that gets switched off at the end of the quarter.</p>
+      </div>
+      <div class="practice-item">
+        <h3 class="label">Evaluate continuously.</h3>
+        <p class="font-body">Test suites for probabilistic systems. Regression detection when a provider silently changes a model under you.</p>
+      </div>
+      <div class="practice-item">
+        <h3 class="label">Tell you what not to build.</h3>
+        <p class="font-body">A meaningful share of AI proposals should be a database query, a rules engine, or nothing. We'd rather say so in week one.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section container bg-brand text-inverse">
+    <h2 class="font-display heading">Book a technical call</h2>
+    <p class="font-body text-large">Talk to an engineer about your architecture, constraints, and whether an LLM is actually the right tool for the job.</p>
+    <a href="/contact" class="btn btn-inverse mt-6">Start a project</a>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+  }
+
+  .section-header {
+    margin-bottom: var(--s-8);
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+    max-width: 800px;
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .practices-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .practice-item {
+    border-top: 1px solid var(--rule);
+    padding-top: var(--s-4);
+  }
+
+  .practice-item h3 {
+    margin-bottom: var(--s-2);
+    color: var(--text);
+  }
+
+  .practice-item p {
+    color: var(--text-muted);
+  }
+  
+  .text-link {
+    display: inline-block;
+    color: var(--brand-500);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .text-link:hover {
+    text-decoration: underline;
+  }
+
+  .cta-section {
+    padding: var(--s-14) var(--s-6);
+    border-radius: var(--r-lg);
+    margin-bottom: var(--s-12);
+    text-align: center;
+    background-color: var(--brand-600);
+    color: white;
+  }
+
+  .cta-section p {
+    max-width: 600px;
+    margin: var(--s-4) auto 0;
+    opacity: 0.9;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--s-6);
+    height: 48px;
+    border-radius: var(--r-md);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--t-fast) var(--ease-out);
+  }
+
+  .btn-inverse {
+    background: white;
+    color: var(--brand-600);
+  }
+
+  .btn-inverse:hover {
+    background: var(--surface-alt);
+  }
+
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+    border-radius: var(--r-lg);
+    padding-left: var(--s-6);
+    padding-right: var(--s-6);
+    margin: var(--s-8) 0;
+  }
+
+  .mb-12 {
+    margin-bottom: var(--s-12);
+  }
+  
+  .mt-2 {
+    margin-top: var(--s-2);
+  }
+
+  .mt-6 {
+    margin-top: var(--s-6);
+  }
+</style>

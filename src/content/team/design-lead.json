@@ -1,0 +1,15 @@
+{
+  "id": "design-lead",
+  "name": "Michael Thorne",
+  "role": "Design Lead",
+  "bio": "Michael ensures our software is not just functional, but intuitive. He creates scalable design systems that engineers actually want to use and users intuitively understand.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "Product design",
+    "Design systems"
+  ],
+  "order": 8,
+  "leadership": false,
+  "placeholder": false
+}

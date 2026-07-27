@@ -1,0 +1,12 @@
+{
+  "id": "t1",
+  "quote": "[PLACEHOLDER] Two to three sentences describing the problem PrivoLabs solved, how the team worked, and the outcome that mattered. Replace this text entirely. Keep the replacement between 120 and 340 characters.",
+  "authorName": "[PLACEHOLDER] Client Name",
+  "authorRole": "[PLACEHOLDER] Job Title",
+  "company": "[PLACEHOLDER] Company",
+  "companyLogo": null,
+  "industry": "healthcare",
+  "relatedWork": null,
+  "featured": true,
+  "placeholder": true
+}

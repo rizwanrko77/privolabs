@@ -1,0 +1,12 @@
+{
+  "id": "t3",
+  "quote": "[PLACEHOLDER] A quote about the AI engagement — what was moved from prototype to production and what changed as a result. Replace entirely, between 120 and 340 characters.",
+  "authorName": "[PLACEHOLDER] Client Name",
+  "authorRole": "[PLACEHOLDER] Job Title",
+  "company": "[PLACEHOLDER] Company",
+  "companyLogo": null,
+  "industry": "retail",
+  "relatedWork": null,
+  "featured": true,
+  "placeholder": true
+}

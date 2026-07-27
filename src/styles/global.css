@@ -1,0 +1,378 @@
+/* ==========================================================================
+   PrivoLabs — Global Styles
+   Source: 02-DESIGN-SYSTEM.md §3.35
+   ========================================================================== */
+
+@import './tokens.css';
+@import './motion.css';
+
+/* --------------------------------------------------------------------------
+   Reset — minimal, modern
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--body);
+  line-height: 1.65;
+  color: var(--text);
+  background-color: var(--surface);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   §3.35 Selection
+   -------------------------------------------------------------------------- */
+::selection {
+  background: var(--brand-500);
+  color: var(--ink-900);
+}
+
+/* --------------------------------------------------------------------------
+   §3.35 Scrollbar
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-600);
+  border-radius: var(--r-full);
+  transition: background var(--t-fast) var(--ease-out);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-500);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-600) var(--ink-900);
+}
+
+/* --------------------------------------------------------------------------
+   §3.35 Focus ring — 2px orange, 3px offset, never removed, never subtle
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--brand-500);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* Remove default focus for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   §3.35 Grain — SVG feTurbulence overlay
+   Kills banding on large dark fields. <1kB, no repaint cost.
+   -------------------------------------------------------------------------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Button Styles
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--s-6);
+  height: 48px;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--body);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all var(--t-fast) var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--brand-500);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--brand-600);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--brand-500);
+  color: var(--brand-500);
+}
+
+.btn-inverse {
+  background: white;
+  color: var(--brand-600);
+}
+
+.btn-inverse:hover {
+  background: var(--surface-alt);
+}
+
+/* --------------------------------------------------------------------------
+   Layout utilities
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Below-fold sections get content-visibility for performance */
+.section-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* --------------------------------------------------------------------------
+   Typography utilities
+   -------------------------------------------------------------------------- */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--display-xl);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: var(--display-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: var(--display-md);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: var(--heading);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.body-lg {
+  font-size: var(--body-lg);
+  line-height: 1.6;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.metric {
+  font-family: var(--font-mono);
+  font-size: var(--metric);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Color utilities
+   -------------------------------------------------------------------------- */
+.text-brand    { color: var(--text-brand); }
+.text-muted    { color: var(--text-muted); }
+.text-faint    { color: var(--text-faint); }
+.bg-surface    { background-color: var(--surface); }
+.bg-raised     { background-color: var(--surface-raised); }
+
+/* --------------------------------------------------------------------------
+   Skip to content — first in tab order
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: var(--s-4);
+  z-index: 10000;
+  padding: var(--s-3) var(--s-5);
+  background: var(--brand-500);
+  color: var(--ink-900);
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--r-md);
+  transition: top var(--t-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: var(--s-4);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll listeners and passive event helpers
+   -------------------------------------------------------------------------- */
+.scroll-locked {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+/* Form styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  max-width: 600px;
+  background-color: var(--surface-raised);
+  padding: var(--s-8) var(--s-6);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--rule);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+[data-theme='dark'] .contact-form {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.form-row {
+  display: flex;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+}
+.form-row > * {
+  flex: 1;
+  min-width: 200px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.form-group label {
+  font-family: var(--font-mono);
+  font-size: var(--small);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: var(--s-3);
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  border-radius: var(--r-sm);
+  transition: all var(--t-fast) var(--ease-out);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 3px rgba(255, 74, 23, 0.15);
+}
+.form-submit-btn {
+  width: 100%;
+  margin-top: var(--s-4);
+  font-size: var(--body-lg);
+}
+.form-error {
+  padding: var(--s-3);
+  background: #fff0f0;
+  color: #d00;
+  border-left: 4px solid #d00;
+  border-radius: var(--r-sm);
+}
+[data-theme='dark'] .form-error {
+  background: #310000;
+  color: #ffb4b4;
+  border-left-color: #ff4a17; /* using brand color for error in dark mode to align with aesthetics */
+}
+
+/* --------------------------------------------------------------------------
+   Global Layout Overrides
+   -------------------------------------------------------------------------- */
+/* The layout <main> tag automatically adds 96px for the fixed header. 
+   The scoped .hero-section rules add an additional var(--s-14) padding, 
+   creating a massive 256px gap. We override it globally here to var(--s-8). */
+.hero-section {
+  padding-top: var(--s-8) !important;
+}

@@ -1,0 +1,16 @@
+{
+  "id": "fullstack-engineer",
+  "name": "Aisha Patel",
+  "role": "Senior Full-Stack Engineer",
+  "bio": "Aisha bridges the gap between complex backend logic and smooth frontend experiences. She is our resident TypeScript expert and specializes in building data-intensive applications.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "TypeScript",
+    "Python",
+    "PostgreSQL"
+  ],
+  "order": 7,
+  "leadership": false,
+  "placeholder": false
+}

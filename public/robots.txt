@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://privolabs.com/sitemap-index.xml

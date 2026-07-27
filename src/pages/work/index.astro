@@ -1,0 +1,57 @@
+---
+/**
+ * PrivoLabs — Work Index
+ * Source: 01-ARCHITECTURE.md §3
+ */
+
+import Page from '../../layouts/Page.astro';
+import { getCollection } from 'astro:content';
+
+const work = await getCollection('work');
+// Sort by order
+const sortedWork = work.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Page 
+  title="Work — PrivoLabs" 
+  description="Explore our portfolio of successful digital transformations and AI systems."
+>
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="font-display heading">Our Work</h1>
+      <p class="font-body text-muted">Case studies in digital innovation and enterprise engineering.</p>
+    </div>
+  </section>
+
+  <section class="work-grid container py-12">
+    {sortedWork.length > 0 ? (
+      <div style="display: grid; gap: var(--s-6);">
+        {sortedWork.map(caseStudy => (
+          <article style="padding: var(--s-6); border: 1px solid var(--rule); border-radius: var(--r-md);">
+            <h2 class="font-display">{caseStudy.data.title}</h2>
+            <p class="label text-brand">{caseStudy.data.client}</p>
+            <p class="text-muted mt-4">{caseStudy.data.summary}</p>
+            <a href={`/work/${caseStudy.id}`} class="btn-primary mt-6" style="display:inline-block; text-decoration:none;">View Case Study</a>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="label text-faint text-center">No case studies found.</p>
+    )}
+  </section>
+</Page>
+
+<style>
+  .hero-section {
+    padding-top: var(--s-11);
+    padding-bottom: var(--s-6);
+    border-bottom: 1px solid var(--rule);
+  }
+  .py-12 {
+    padding-top: var(--s-9);
+    padding-bottom: var(--s-9);
+  }
+  .mt-4 { margin-top: var(--s-4); }
+  .mt-6 { margin-top: var(--s-6); }
+  .text-center { text-align: center; }
+</style>

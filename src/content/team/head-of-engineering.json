@@ -1,0 +1,15 @@
+{
+  "id": "head-of-engineering",
+  "name": "Elena Rodriguez",
+  "role": "Head of Engineering",
+  "bio": "Elena oversees all technical delivery across PrivoLabs. With a background in distributed systems, she ensures that our teams build software that scales predictably and fails gracefully.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "Distributed systems",
+    "Team leadership"
+  ],
+  "order": 3,
+  "leadership": true,
+  "placeholder": false
+}

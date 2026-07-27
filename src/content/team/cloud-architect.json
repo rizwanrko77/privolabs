@@ -1,0 +1,16 @@
+{
+  "id": "cloud-architect",
+  "name": "David Al-Fayed",
+  "role": "Principal Cloud Architect",
+  "bio": "David designs our cloud infrastructure. He specializes in Kubernetes and multi-cloud architectures, focusing heavily on cost engineering so client bills never hold surprises.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "AWS",
+    "Kubernetes",
+    "Cost engineering"
+  ],
+  "order": 4,
+  "leadership": false,
+  "placeholder": false
+}

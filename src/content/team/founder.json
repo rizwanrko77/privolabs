@@ -1,0 +1,15 @@
+{
+  "id": "founder",
+  "name": "Sarah Jenks",
+  "role": "Founder & Chief Executive",
+  "bio": "Sarah founded PrivoLabs after a decade leading infrastructure engineering at major financial institutions. She focuses on systems architecture and ensuring every project meets our rigorous production standards.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "Systems architecture",
+    "Delivery leadership"
+  ],
+  "order": 1,
+  "leadership": true,
+  "placeholder": false
+}

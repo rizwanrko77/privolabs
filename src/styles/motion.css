@@ -1,0 +1,260 @@
+/* ==========================================================================
+   PrivoLabs — Motion Tokens & Keyframes
+   Source: 02-DESIGN-SYSTEM.md §1.7, §3.3, §3.11, §5.1
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   §1.7 Easing curves
+   -------------------------------------------------------------------------- */
+:root {
+  --ease-out:  cubic-bezier(.16, 1, .3, 1);      /* entrances */
+  --ease-in:   cubic-bezier(.7, 0, .84, 0);      /* exits */
+  --ease-both: cubic-bezier(.65, 0, .35, 1);     /* state changes */
+  --ease-snap: cubic-bezier(.34, 1.56, .64, 1);  /* overshoot — buttons, chips only */
+  --ease-mech: cubic-bezier(.83, 0, .17, 1);     /* heavy — panels, wipes */
+
+  /* --------------------------------------------------------------------------
+     §1.7 Duration tokens
+     Duration by distance: 8px → --t-fast, 40px → --t-base, viewport → --t-slower
+     -------------------------------------------------------------------------- */
+  --t-instant:  80ms;
+  --t-fast:     140ms;
+  --t-quick:    200ms;
+  --t-base:     320ms;
+  --t-slow:     480ms;
+  --t-slower:   700ms;
+  --t-overture: 1200ms;
+
+  /* --------------------------------------------------------------------------
+     §1.7 Stagger tokens
+     -------------------------------------------------------------------------- */
+  --stagger-tight: 40ms;
+  --stagger-base:  70ms;
+  --stagger-loose: 110ms;
+}
+
+/* --------------------------------------------------------------------------
+   §3.3 Scroll progress bar — pure CSS, compositor-only, zero JS
+   -------------------------------------------------------------------------- */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--brand-500);
+    transform-origin: 0 50%;
+    z-index: 9999;
+    animation: scroll-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  @keyframes scroll-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   §3.11 Hero headline — width-axis type expansion
+   The signature animation: type widens into position rather than fading.
+   font-variation-settings on main thread — acceptable for 3 lines, once.
+   -------------------------------------------------------------------------- */
+@keyframes set-type {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    font-variation-settings: 'wdth' 78, 'wght' 600, 'opsz' 96;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    font-variation-settings: 'wdth' 100, 'wght' 600, 'opsz' 96;
+  }
+}
+
+.hero-line {
+  animation: set-type 640ms var(--ease-out) both;
+  animation-delay: calc(280ms + var(--i) * 110ms);
+}
+
+/* --------------------------------------------------------------------------
+   §3.16 Section reveal — the universal entrance pattern
+   Every section enters identically. Fires once via data-inview.
+   -------------------------------------------------------------------------- */
+@keyframes reveal-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 20px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rule-draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Section reveal elements — hidden until observed */
+[data-reveal] {
+  opacity: 0;
+}
+
+[data-reveal][data-inview="true"] .reveal-rule {
+  animation: rule-draw 420ms var(--ease-out) both;
+  transform-origin: 0 50%;
+}
+
+[data-reveal][data-inview="true"] .reveal-eyebrow {
+  --reveal-y: 8px;
+  animation: reveal-fade-up 320ms var(--ease-out) 80ms both;
+}
+
+[data-reveal][data-inview="true"] .reveal-heading {
+  --reveal-y: 20px;
+  animation: reveal-fade-up 520ms var(--ease-out) 160ms both;
+}
+
+[data-reveal][data-inview="true"] .reveal-body {
+  --reveal-y: 16px;
+  animation: reveal-fade-up 420ms var(--ease-out) 280ms both;
+}
+
+[data-reveal][data-inview="true"] .reveal-child {
+  --reveal-y: 16px;
+  animation: reveal-fade-up 420ms var(--ease-out) both;
+  animation-delay: calc(380ms + var(--i, 0) * var(--stagger-base));
+}
+
+/* When in view, make the container visible */
+[data-reveal][data-inview="true"] {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   §3.4 Page transition — ignition wipe
+   -------------------------------------------------------------------------- */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) {
+  animation: pg-out 240ms var(--ease-in) both;
+}
+
+::view-transition-new(root) {
+  animation: pg-in 400ms var(--ease-out) 120ms both;
+}
+
+@keyframes pg-out {
+  to {
+    opacity: 0;
+    transform: scale(.98);
+  }
+}
+
+@keyframes pg-in {
+  from {
+    opacity: 0;
+    transform: scale(.98);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   §3.1 Boot sequence keyframes
+   -------------------------------------------------------------------------- */
+@keyframes boot-line-ignite {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes boot-line-split-top {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50vh); }
+}
+
+@keyframes boot-line-split-bottom {
+  from { transform: translateY(0); }
+  to   { transform: translateY(50vh); }
+}
+
+@keyframes boot-fade-out {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   §3.22 Metric counter — tabular-nums mandatory
+   -------------------------------------------------------------------------- */
+.metric-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   §3.33 CTA band — ambient gradient drift
+   -------------------------------------------------------------------------- */
+@keyframes gradient-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --------------------------------------------------------------------------
+   §3.32 404 — width oscillation
+   -------------------------------------------------------------------------- */
+@keyframes wdth-oscillate {
+  0%   { font-variation-settings: 'wdth' 75; }
+  50%  { font-variation-settings: 'wdth' 100; }
+  100% { font-variation-settings: 'wdth' 75; }
+}
+
+/* --------------------------------------------------------------------------
+   §5.1 Reduced motion — a designed state, not a degraded one
+   
+   Boot sequence: skipped
+   Reveals: instant opacity, no transform
+   Counters: render final values immediately
+   Telemetry: real numbers, no count-up
+   System map: static with all paths visible
+   Marquee: stops, logos in static grid
+   Testimonial autoplay: off
+   Custom cursor: disabled
+   Page transitions: 100ms crossfade
+   Hover states: remain (colour/border changes are not motion)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Reveals become instant — no transform, just visible */
+  [data-reveal] {
+    opacity: 1 !important;
+  }
+
+  /* Page transitions become instant crossfade */
+  ::view-transition-old(root) {
+    animation-duration: 100ms !important;
+  }
+
+  ::view-transition-new(root) {
+    animation-duration: 100ms !important;
+    animation-delay: 0ms !important;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+

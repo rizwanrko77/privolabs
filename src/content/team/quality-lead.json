@@ -1,0 +1,16 @@
+{
+  "id": "quality-lead",
+  "name": "James O'Connor",
+  "role": "Head of Quality Engineering",
+  "bio": "James treats testing as a core engineering discipline, not an afterthought. He builds the automated suites and evaluation harnesses that allow our teams to deploy on Fridays with confidence.",
+  "photo": null,
+  "linkedin": null,
+  "specialisms": [
+    "Test automation",
+    "Performance",
+    "Security"
+  ],
+  "order": 6,
+  "leadership": false,
+  "placeholder": false
+}

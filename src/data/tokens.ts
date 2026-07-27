@@ -1,0 +1,17 @@
+export const tokens = {
+  PHONE: '+44 20 7946 0958',
+  ADDRESS_LINE_1: '120 Fenchurch St.',
+  ADDRESS_LINE_2: '',
+  ADDRESS_CITY_STATE_POST: 'London EC3M 5BA',
+  ADDRESS_COUNTRY: 'UK',
+  FOUNDER_NAME: 'Sarah Jenks',
+  FOUNDER_ROLE: 'Principal Engineer & Founder',
+  FOUNDER_PHOTO: '/images/team/sarah-jenks.jpg',
+  FOUNDER_LINKEDIN: 'https://linkedin.com/in/example',
+  FOUNDING_YEAR: '2016',
+  YEARS_EXPERIENCE: '10',
+  TEAM_SIZE: '42',
+  PROJECTS_DELIVERED: '150',
+  COUNTRIES_SERVED: '12',
+  BLOG_AUTHORS: 'PrivoLabs Engineering',
+};

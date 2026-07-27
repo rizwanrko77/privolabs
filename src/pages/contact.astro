@@ -1,0 +1,183 @@
+---
+/**
+ * PrivoLabs — Contact Page
+ * Source: 01-ARCHITECTURE.md §3, 03-CONTENT.md §6
+ */
+
+import Page from '../layouts/Page.astro';
+import ContactForm from '../components/sections/ContactForm.tsx';
+import { tokens } from '../data/tokens';
+---
+
+<Page 
+  title="Contact — PrivoLabs" 
+  description="Tell us what you're building. Send the problem rather than a specification."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <p class="eyebrow">Contact</p>
+      <h1 class="font-display heading hero-heading">Tell us what you're building</h1>
+      <p class="font-body text-large hero-subhead">
+        Send the problem rather than a specification. The first reply comes from an engineer, not a salesperson.
+      </p>
+    </div>
+  </section>
+  
+  <section class="container contact-section">
+    <div class="contact-grid">
+      <div class="form-wrapper">
+        <ContactForm client:only="react" />
+      </div>
+      <div class="contact-info">
+        <div class="info-block bg-surface-alt">
+          <div class="info-row">
+            <span class="info-label label text-muted">EMAIL</span>
+            <span class="info-value font-body">contact@privolabs.com</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label label text-muted">PHONE</span>
+            <span class="info-value font-body">{tokens.PHONE}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label label text-muted">OFFICE</span>
+            <span class="info-value font-body">
+              {tokens.ADDRESS_LINE_1}<br/>
+              {tokens.ADDRESS_LINE_2}<br/>
+              {tokens.ADDRESS_CITY_STATE_POST}<br/>
+              {tokens.ADDRESS_COUNTRY}
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="info-label label text-muted">HOURS</span>
+            <span class="info-value font-body">
+              Mon–Sat 08:00 – 18:00<br/>
+              Sunday Closed
+            </span>
+          </div>
+          <div class="info-row mt-4">
+            <span class="info-label label text-muted">SOCIAL</span>
+            <span class="info-value font-body">
+              <a href={tokens.FOUNDER_LINKEDIN} class="text-link">LinkedIn</a> &middot; 
+              <a href="#" class="text-link">YouTube</a> &middot; 
+              <a href="#" class="text-link">Instagram</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="next-steps mt-8">
+          <h2 class="font-display heading mb-4">What happens next</h2>
+          <div class="step">
+            <span class="step-num label">01</span>
+            <span class="step-text font-body">We reply within one business day.</span>
+          </div>
+          <div class="step">
+            <span class="step-num label">02</span>
+            <span class="step-text font-body">First call is technical, thirty minutes, no charge.</span>
+          </div>
+          <div class="step">
+            <span class="step-num label">03</span>
+            <span class="step-text font-body">If we're not the right fit, we'll say so and suggest who is.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+    padding-bottom: var(--s-8);
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+    max-width: 800px;
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    color: var(--text-muted);
+  }
+
+  .contact-section {
+    padding-bottom: var(--s-16);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-10);
+  }
+  
+  @media (min-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+
+  .info-block {
+    padding: var(--s-8);
+    border-radius: var(--r-md);
+  }
+
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+  }
+
+  .info-row {
+    display: flex;
+    margin-bottom: var(--s-4);
+  }
+
+  .info-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-label {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .info-value {
+    color: var(--text);
+  }
+
+  .text-link {
+    color: var(--brand-500);
+    text-decoration: none;
+  }
+
+  .text-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-steps .step {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: var(--s-3);
+    padding-bottom: var(--s-3);
+    border-bottom: 1px solid var(--rule);
+  }
+  
+  .next-steps .step:last-child {
+    border-bottom: none;
+  }
+
+  .step-num {
+    color: var(--brand-500);
+    width: 40px;
+    flex-shrink: 0;
+  }
+
+  .mt-4 { margin-top: var(--s-4); }
+  .mt-8 { margin-top: var(--s-8); }
+  .mb-4 { margin-bottom: var(--s-4); }
+</style>

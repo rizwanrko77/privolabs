@@ -1,0 +1,12 @@
+{
+  "id": "t2",
+  "quote": "[PLACEHOLDER] A quote that names a specific constraint the team worked under and what they did about it. Specifics beat praise. Replace this text entirely, keeping it between 120 and 340 characters.",
+  "authorName": "[PLACEHOLDER] Client Name",
+  "authorRole": "[PLACEHOLDER] Job Title",
+  "company": "[PLACEHOLDER] Company",
+  "companyLogo": null,
+  "industry": "finance",
+  "relatedWork": null,
+  "featured": true,
+  "placeholder": true
+}

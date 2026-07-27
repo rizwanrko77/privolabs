@@ -1,0 +1,133 @@
+---
+/**
+ * PrivoLabs — BackToTop
+ * Source: 02-DESIGN-SYSTEM.md §3.10
+ *
+ * Appears after 800px. 
+ * Hover: arrow travels 4px up with ghost arrow rising. 
+ * Click: spins 360deg and smooth scrolls to top.
+ */
+---
+
+<button id="back-to-top" class="btt-btn" aria-label="Back to top" data-cursor="button">
+  <div class="btt-icon-wrapper">
+    <svg class="btt-arrow ghost" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+    <svg class="btt-arrow main" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </div>
+</button>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  
+  if (btn) {
+    let isVisible = false;
+    let ticking = false;
+    
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y > 800 && !isVisible) {
+          btn.dataset.visible = 'true';
+          isVisible = true;
+        } else if (y <= 800 && isVisible) {
+          btn.dataset.visible = 'false';
+          isVisible = false;
+        }
+        ticking = false;
+      });
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+      btn.dataset.spinning = 'true';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Remove spin attribute after animation
+      setTimeout(() => {
+        btn.dataset.spinning = 'false';
+      }, 600); // 600ms should cover the scroll time mostly
+    });
+  }
+</script>
+
+<style>
+  .btt-btn {
+    position: fixed;
+    bottom: var(--s-6);
+    right: var(--s-6);
+    z-index: 90;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-full);
+    background: var(--surface-raised);
+    border: 1px solid var(--rule);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--e-2);
+    
+    /* Initial hidden state */
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8) rotate(-90deg);
+    transition: opacity var(--t-quick) var(--ease-both),
+                transform var(--t-base) var(--ease-snap),
+                background var(--t-fast) var(--ease-out),
+                border-color var(--t-fast) var(--ease-out);
+  }
+
+  .btt-btn[data-visible="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) rotate(0deg);
+  }
+
+  .btt-btn[data-spinning="true"] {
+    transform: rotate(360deg) scale(0.9);
+    transition: transform 600ms var(--ease-out);
+  }
+
+  .btt-btn:hover {
+    background: var(--surface-hover);
+    border-color: var(--brand-500);
+  }
+
+  .btt-icon-wrapper {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+  }
+
+  .btt-arrow {
+    position: absolute;
+    inset: 0;
+    transition: transform var(--t-fast) var(--ease-out),
+                opacity var(--t-fast) var(--ease-out);
+  }
+
+  .btt-arrow.main {
+    transform: translateY(0);
+  }
+
+  .btt-arrow.ghost {
+    transform: translateY(24px);
+    opacity: 0.4;
+  }
+
+  .btt-btn:hover .btt-arrow.main {
+    transform: translateY(-4px);
+  }
+
+  .btt-btn:hover .btt-arrow.ghost {
+    transform: translateY(0); /* Rises up to replace */
+    opacity: 0.4;
+  }
+</style>

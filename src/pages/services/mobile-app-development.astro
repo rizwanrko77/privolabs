@@ -1,0 +1,160 @@
+---
+/**
+ * PrivoLabs — Mobile & App Development Service Page
+ * Source: 03-CONTENT.md §5.4
+ */
+
+import Page from '../../layouts/Page.astro';
+---
+
+<Page 
+  title="Mobile & App Development | PrivoLabs" 
+  description="Apps people keep on the first screen. Native iOS and Android, React Native, Flutter, and robust backends."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <p class="eyebrow">Service</p>
+      <h1 class="font-display heading hero-heading">Apps people keep on the first screen</h1>
+      <p class="font-body text-large hero-subhead">
+        Native where performance matters, cross-platform where it doesn't. The decision should follow from your requirements, not from what your agency prefers building.
+      </p>
+    </div>
+  </section>
+
+  <section class="capabilities-section container bg-surface-alt">
+    <div class="section-header">
+      <p class="eyebrow">Overview</p>
+      <h2 class="font-display heading">Mobile Engineering</h2>
+    </div>
+    
+    <div class="grid gap-grid mt-8">
+      <div class="panel">
+        <h3 class="label">Native</h3>
+        <p class="font-body mt-4">
+          iOS in Swift with SwiftUI and UIKit, Core Data and CloudKit. Android in Kotlin with Jetpack Compose and Material Design.
+        </p>
+      </div>
+      <div class="panel">
+        <h3 class="label">Cross-platform</h3>
+        <p class="font-body mt-4">
+          React Native and Flutter, when a shared codebase costs less than it gives up.
+        </p>
+      </div>
+      <div class="panel">
+        <h3 class="label">Behind the app</h3>
+        <p class="font-body mt-4">
+          Node.js, Python, and Java. AWS and Firebase. MongoDB and PostgreSQL. REST and GraphQL.
+        </p>
+      </div>
+      <div class="panel">
+        <h3 class="label">What we handle</h3>
+        <ul class="bullet-list font-body mt-4">
+          <li>Offline functionality</li>
+          <li>Push notifications</li>
+          <li>Location services</li>
+          <li>Enterprise system integration</li>
+          <li>Store submission and review</li>
+          <li>Post-launch updates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section container bg-brand text-inverse">
+    <h2 class="font-display heading">Tell us what you're building.</h2>
+    <p class="font-body text-large">Send the problem, not a spec. First conversation is with an engineer, not a salesperson, and you'll get a straight answer about whether we're the right fit.</p>
+    <a href="/contact" class="btn btn-inverse mt-6">Start a project</a>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+  }
+
+  .section-header {
+    margin-bottom: var(--s-8);
+  }
+
+  .hero-heading {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+    max-width: 900px;
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .gap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .bullet-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    list-style: disc;
+    padding-left: var(--s-4);
+  }
+
+  .cta-section {
+    padding: var(--s-14) var(--s-6);
+    border-radius: var(--r-lg);
+    margin-bottom: var(--s-12);
+    text-align: center;
+    background-color: var(--brand-600);
+    color: white;
+  }
+
+  .cta-section p {
+    max-width: 600px;
+    margin: var(--s-4) auto 0;
+    opacity: 0.9;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--s-6);
+    height: 48px;
+    border-radius: var(--r-md);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--t-fast) var(--ease-out);
+  }
+
+  .btn-inverse {
+    background: white;
+    color: var(--brand-600);
+  }
+
+  .btn-inverse:hover {
+    background: var(--surface-alt);
+  }
+
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+    border-radius: var(--r-lg);
+    padding: var(--s-8) var(--s-6);
+    margin: var(--s-8) 0;
+  }
+
+  .mt-4 { margin-top: var(--s-4); }
+  .mt-6 { margin-top: var(--s-6); }
+  .mt-8 { margin-top: var(--s-8); }
+</style>

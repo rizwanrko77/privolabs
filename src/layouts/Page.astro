@@ -1,0 +1,100 @@
+---
+/**
+ * PrivoLabs — Page Layout
+ * Source: Implementation Plan §1.4 & §2
+ *
+ * Extends Base layout. Adds persistent chrome:
+ * - Scroll progress bar
+ * - TelemetryRail (React island)
+ * - Header (sticky, animated)
+ * - Footer (mega-footer)
+ * - BackToTop button
+ */
+
+import Base from './Base.astro';
+import TelemetryRail from '../components/chrome/TelemetryRail.tsx';
+import Header from '../components/chrome/Header.astro';
+import Footer from '../components/chrome/Footer.astro';
+import BackToTop from '../components/chrome/BackToTop.astro';
+import Cursor from '../components/chrome/Cursor.tsx';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noIndex?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<Base {...props}>
+  <Cursor client:only="react" />
+
+  <!-- Global Header -->
+  <Header />
+
+  <!-- Scroll progress bar — pure CSS, compositor-only -->
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- Telemetry rail — React island, client:only="react" -->
+  <TelemetryRail client:only="react" />
+
+  <!-- Main content area — offset for rail on desktop -->
+  <main id="main-content" class="page-main">
+    <slot />
+  </main>
+
+  <!-- Global Footer -->
+  <Footer />
+
+  <!-- Back to Top Button -->
+  <BackToTop />
+</Base>
+
+<style>
+  /* Rail offset on desktop */
+  .page-main {
+    margin-left: 0;
+    min-height: 100dvh;
+    padding-top: 96px; /* Space for the header */
+  }
+
+  @media (min-width: 900px) {
+    .page-main {
+      margin-left: 96px; /* Make room for the rail */
+    }
+  }
+
+  /* Scroll progress bar §3.3 */
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--brand-500);
+    transform-origin: 0 50%;
+    z-index: 101; /* Above header */
+    pointer-events: none;
+  }
+  
+  @supports (animation-timeline: scroll()) {
+    .progress {
+      animation: grow linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+  }
+
+  /* Rail pulse animation for the orange tick */
+  @keyframes rail-pulse {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+</style>

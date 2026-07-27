@@ -1,0 +1,147 @@
+/* ==========================================================================
+   PrivoLabs — Design Tokens
+   Source: 02-DESIGN-SYSTEM.md §1.1–1.6
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   §1.2 Brand ramp — Fixed 13° hue, contrast-verified at every step
+   -------------------------------------------------------------------------- */
+:root {
+  --brand-50:  #FEECE7;
+  --brand-100: #FDD0C3;
+  --brand-200: #FFA78F;
+  --brand-300: #FF805C;
+  --brand-400: #FF683D;
+  --brand-500: #FF4A17;  /* ◀ BRAND — International Orange */
+  --brand-600: #EA3806;
+  --brand-700: #B8300A;
+  --brand-800: #84250B;
+  --brand-900: #571B0A;
+  --brand-950: #311007;
+
+  /* --------------------------------------------------------------------------
+     §1.3 Neutrals — Cool-shifted (blue-leaning black for temperature contrast)
+     -------------------------------------------------------------------------- */
+  --ink-950: #06080A;   /* overlays, scrim */
+  --ink-900: #0A0D10;   /* ◀ PRIMARY DARK SURFACE */
+  --ink-800: #0E1216;   /* raised — cards, scrolled header */
+  --ink-700: #141920;   /* raised 2 — hover, code blocks */
+  --ink-600: #1C232C;   /* rules, borders */
+  --ink-500: #2A3340;   /* strong borders, inputs */
+  --ink-400: #4A5462;   /* disabled, placeholder */
+  --ink-300: #6E7885;   /* faint metadata — 4.35:1 on dark */
+  --ink-200: #A8B0BA;   /* ◀ SECONDARY TEXT — 8.89:1 on dark */
+  --ink-100: #D6DAE0;
+  --bone:    #F5F3F0;   /* ◀ PRIMARY TEXT — 17.59:1 on dark */
+
+  /* --------------------------------------------------------------------------
+     §1.4 Semantic tokens — Dark mode (default)
+     -------------------------------------------------------------------------- */
+  --surface:        var(--ink-900);
+  --surface-raised: var(--ink-800);
+  --surface-hover:  var(--ink-700);
+  --surface-alt:    var(--ink-950);
+  --surface-float:  var(--ink-800);
+  --rule:           var(--ink-600);
+  --rule-strong:    var(--ink-500);
+
+  --text:       var(--bone);
+  --text-muted: var(--ink-200);
+  --text-faint: var(--ink-300);
+  --text-brand: var(--brand-500);
+
+  --accent:       var(--brand-500);
+  --accent-hover: var(--brand-400);
+  --accent-press: var(--brand-600);
+  --on-accent:    var(--ink-900);      /* ◀ NEVER white — Rule 1 */
+
+  --data-steady: #4C8FA8;
+  --success:     #3FA680;
+  --danger:      #E5484D;
+
+  --focus-ring: var(--brand-500);
+
+  /* --------------------------------------------------------------------------
+     §1.5 Typography
+     -------------------------------------------------------------------------- */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body:    'Public Sans', system-ui, sans-serif;
+  --font-mono:    'Commit Mono', ui-monospace, 'SF Mono', monospace;
+
+  --display-xl: clamp(3rem, 7vw, 5.5rem);       /* 600 wght, wdth 100, -0.03em, 0.95 lh */
+  --display-lg: clamp(2.25rem, 4.5vw, 3.5rem);  /* 600 wght, -0.02em, 1.02 lh */
+  --display-md: clamp(1.75rem, 3vw, 2.5rem);    /* 500 wght, -0.015em, 1.1 lh */
+  --heading:    clamp(1.375rem, 2.2vw, 1.75rem);
+  --heading-sm: clamp(1.125rem, 1.8vw, 1.375rem);
+  --body-lg:    1.25rem;   /* 1.6 lh */
+  --body:       1rem;      /* 1.65 lh */
+  --small:      0.875rem;
+  --label:      0.8125rem; /* mono 500, 0.08em, uppercase */
+  --metric:     clamp(2rem, 4vw, 3.25rem);  /* mono 400, tabular-nums */
+
+  /* --------------------------------------------------------------------------
+     §1.6 Space
+     -------------------------------------------------------------------------- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  clamp(48px, 5vw, 64px);
+  --s-9:  clamp(64px, 6vw, 80px);
+  --s-10: clamp(80px, 8vw, 96px);
+  --s-11: clamp(96px, 10vw, 112px);
+  --s-12: clamp(112px, 12vw, 128px);
+  --s-13: clamp(128px, 14vw, 144px);
+  --s-14: clamp(144px, 16vw, 160px);
+  --s-15: clamp(160px, 18vw, 176px);
+  --s-16: clamp(176px, 20vw, 192px);
+
+  --rail:      96px;
+  --container: 1280px;
+  --gutter:    clamp(20px, 4vw, 48px);
+
+  /* --------------------------------------------------------------------------
+     §1.6 Radius — Tight. Engineered, not consumer-friendly.
+     -------------------------------------------------------------------------- */
+  --r-sm:   2px;    /* inputs, tags */
+  --r-md:   4px;    /* buttons, cards */
+  --r-lg:   8px;    /* modals */
+  --r-full: 999px;  /* avatars, status dots only */
+
+  /* --------------------------------------------------------------------------
+     §1.6 Elevation
+     -------------------------------------------------------------------------- */
+  --e-1: 0 1px 0 var(--ink-600);
+  --e-2: 0 1px 2px rgb(0 0 0 / .4), 0 0 0 1px var(--ink-600);
+  --e-3: 0 8px 24px rgb(0 0 0 / .5), 0 0 0 1px var(--ink-600);
+  --e-4: 0 24px 64px rgb(0 0 0 / .6), 0 0 0 1px var(--ink-500);
+  --e-brand: 0 0 0 1px var(--brand-500), 0 0 24px rgb(255 74 23 / .25);
+}
+
+/* --------------------------------------------------------------------------
+   §1.4 Light mode overrides
+   Rule 2: Orange text darkens to --brand-700 in light mode.
+   Fills and rules keep --brand-500; only text shifts.
+   -------------------------------------------------------------------------- */
+[data-theme="light"] {
+  --surface:        var(--bone);
+  --surface-raised: #FFFFFF;
+  --surface-hover:  #EFECE8;
+  --surface-alt:    #EDE9E3;
+  --surface-float:  #FFFFFF;
+  
+  --rule:           #E8E3DB;
+  --rule-strong:    #C4BDB5;
+
+  --text:       var(--ink-900);
+  --text-muted: #56606C;
+  --text-faint: #7C8590;
+  --text-brand: var(--brand-700);   /* ◀ Darkened for AA compliance */
+
+  --accent:       var(--brand-500); /* fills stay hot */
+  --accent-hover: var(--brand-600);
+  --on-accent:    var(--ink-900);   /* ◀ Still never white */
+}

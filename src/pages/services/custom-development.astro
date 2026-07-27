@@ -1,0 +1,171 @@
+---
+/**
+ * PrivoLabs — Custom Development Service Page
+ * Source: 03-CONTENT.md §5.2
+ */
+
+import Page from '../../layouts/Page.astro';
+---
+
+<Page 
+  title="Custom Development | PrivoLabs" 
+  description="Software shaped to how you actually work. Custom development that mirrors your operations and scales with load."
+>
+  <section class="hero-section container">
+    <div class="hero-content">
+      <p class="eyebrow">Service</p>
+      <h1 class="font-display heading hero-heading">Software shaped to how you actually work</h1>
+      <p class="font-body text-large hero-subhead">
+        Off-the-shelf software forces your process to match its assumptions. Custom development inverts that — at a higher cost that is worth paying only when your process is genuinely a differentiator.
+      </p>
+    </div>
+  </section>
+
+  <section class="capabilities-section container bg-surface-alt">
+    <div class="section-header">
+      <p class="eyebrow">Overview</p>
+      <h2 class="font-display heading">When to build, when to buy</h2>
+    </div>
+    
+    <div class="grid gap-grid mt-8">
+      <div class="panel">
+        <h3 class="label">When custom is right</h3>
+        <ul class="bullet-list font-body mt-4">
+          <li>Your workflow is a competitive advantage</li>
+          <li>Existing tools require workarounds that cost more than they save</li>
+          <li>You need to own the roadmap</li>
+          <li>Integration requirements exceed what packaged software exposes</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 class="label">When it isn't</h3>
+        <p class="font-body mt-4">
+          Standard back-office functions where a proven SaaS product exists. We'll say so.
+        </p>
+      </div>
+      <div class="panel">
+        <h3 class="label">What we build</h3>
+        <ul class="bullet-list font-body mt-4">
+          <li>Business logic that mirrors your operations</li>
+          <li>Architecture that scales with load</li>
+          <li>Security designed in, not bolted on</li>
+          <li>Systems built for the engineers who inherit them</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section container">
+    <div class="section-header">
+      <p class="eyebrow">Scope</p>
+      <h2 class="font-display heading">Also covers</h2>
+    </div>
+    <div class="mt-8">
+      <p class="font-body text-large max-w-text">
+        Modernising legacy systems, replatforming, and rescuing stalled projects.
+      </p>
+    </div>
+  </section>
+
+  <section class="cta-section container bg-brand text-inverse">
+    <h2 class="font-display heading">Tell us what you're building.</h2>
+    <p class="font-body text-large">Send the problem, not a spec. First conversation is with an engineer, not a salesperson, and you'll get a straight answer about whether we're the right fit.</p>
+    <a href="/contact" class="btn btn-inverse mt-6">Start a project</a>
+  </section>
+</Page>
+
+<style>
+  section {
+    padding-top: var(--s-12);
+    padding-bottom: var(--s-12);
+  }
+
+  .hero-section {
+    padding-top: var(--s-14);
+  }
+
+  .section-header {
+    margin-bottom: var(--s-8);
+  }
+
+  .hero-heading {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: var(--s-4) 0 var(--s-6);
+    max-width: 900px;
+  }
+
+  .hero-subhead {
+    max-width: 720px;
+    margin-bottom: var(--s-8);
+    color: var(--text-muted);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--s-8);
+  }
+
+  .gap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .bullet-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    list-style: disc;
+    padding-left: var(--s-4);
+  }
+
+  .max-w-text {
+    max-width: 720px;
+  }
+
+  .cta-section {
+    padding: var(--s-14) var(--s-6);
+    border-radius: var(--r-lg);
+    margin-bottom: var(--s-12);
+    text-align: center;
+    background-color: var(--brand-600);
+    color: white;
+  }
+
+  .cta-section p {
+    max-width: 600px;
+    margin: var(--s-4) auto 0;
+    opacity: 0.9;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--s-6);
+    height: 48px;
+    border-radius: var(--r-md);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--t-fast) var(--ease-out);
+  }
+
+  .btn-inverse {
+    background: white;
+    color: var(--brand-600);
+  }
+
+  .btn-inverse:hover {
+    background: var(--surface-alt);
+  }
+
+  .bg-surface-alt {
+    background-color: var(--surface-alt);
+    border-radius: var(--r-lg);
+    padding: var(--s-8) var(--s-6);
+    margin: var(--s-8) 0;
+  }
+
+  .mt-4 { margin-top: var(--s-4); }
+  .mt-6 { margin-top: var(--s-6); }
+  .mt-8 { margin-top: var(--s-8); }
+</style>
